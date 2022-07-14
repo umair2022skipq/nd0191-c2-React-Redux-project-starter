@@ -1,14 +1,7 @@
-import "./App.css";
-import { AppBar, Toolbar, Typography } from "@mui/material";
+import Layout from "./components/Layout";
 
 const App = () => {
-  return (
-    <AppBar>
-      <Toolbar>
-        <Typography>HEllo World</Typography>
-      </Toolbar>
-    </AppBar>
-  );
+  return <Layout />;
 };
 
 export default App;
