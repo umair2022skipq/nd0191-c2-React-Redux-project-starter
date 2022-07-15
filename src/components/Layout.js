@@ -19,8 +19,6 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import { useState } from "react";
 
 import { MainListItems } from "./ListItems";
-
-import { useNavigate } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
 
 import NewQuestions from "../pages/NewQuestions";
@@ -29,8 +27,6 @@ import AddQuestions from "../pages/AddQuestions";
 import AnsweredQuestion from "../pages/AnsweredQuestion";
 
 const Layout = () => {
-  const navigate = useNavigate();
-
   function Copyright(props) {
     return (
       <Typography
