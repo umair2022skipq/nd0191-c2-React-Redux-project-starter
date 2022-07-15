@@ -6,32 +6,37 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import PeopleIcon from "@mui/icons-material/People";
 import BarChartIcon from "@mui/icons-material/BarChart";
+import { useNavigate } from "react-router-dom";
 
-export const mainListItems = (
-  <>
-    <ListItemButton>
-      <ListItemIcon>
-        <DashboardIcon />
-      </ListItemIcon>
-      <ListItemText primary="Questions" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <ShoppingCartIcon />
-      </ListItemIcon>
-      <ListItemText primary="Answered Questions" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <PeopleIcon />
-      </ListItemIcon>
-      <ListItemText primary="Add Questions" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <BarChartIcon />
-      </ListItemIcon>
-      <ListItemText primary="Leaderboard" />
-    </ListItemButton>
-  </>
-);
+export const MainListItems = () => {
+  const navigate = useNavigate();
+
+  return (
+    <>
+      <ListItemButton onClick={() => navigate("/")}>
+        <ListItemIcon>
+          <DashboardIcon />
+        </ListItemIcon>
+        <ListItemText primary="Questions" />
+      </ListItemButton>
+      <ListItemButton onClick={() => navigate("/answered")}>
+        <ListItemIcon>
+          <ShoppingCartIcon />
+        </ListItemIcon>
+        <ListItemText primary="Answered Questions" />
+      </ListItemButton>
+      <ListItemButton onClick={() => navigate("/add-question")}>
+        <ListItemIcon>
+          <PeopleIcon />
+        </ListItemIcon>
+        <ListItemText primary="Add Questions" />
+      </ListItemButton>
+      <ListItemButton onClick={() => navigate("/leaderboard")}>
+        <ListItemIcon>
+          <BarChartIcon />
+        </ListItemIcon>
+        <ListItemText primary="Leaderboard" />
+      </ListItemButton>
+    </>
+  );
+};

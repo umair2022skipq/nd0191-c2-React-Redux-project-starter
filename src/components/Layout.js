@@ -18,10 +18,10 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import { useState } from "react";
 
-import { mainListItems } from "./ListItems";
+import { MainListItems } from "./ListItems";
 
 import { useNavigate } from "react-router-dom";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import NewQuestions from "../pages/NewQuestions";
 import LeaderBoard from "../pages/LeaderBoard";
@@ -29,6 +29,8 @@ import AddQuestions from "../pages/AddQuestions";
 import AnsweredQuestion from "../pages/AnsweredQuestion";
 
 const Layout = () => {
+  const navigate = useNavigate();
+
   function Copyright(props) {
     return (
       <Typography
@@ -154,7 +156,7 @@ const Layout = () => {
           </Toolbar>
           <Divider />
           <List component="nav">
-            {mainListItems}
+            <MainListItems />
             <Divider sx={{ my: 1 }} />
           </List>
         </Drawer>
