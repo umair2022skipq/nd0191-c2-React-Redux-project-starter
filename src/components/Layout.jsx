@@ -18,7 +18,7 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import { useState } from "react";
 
-import { mainListItems } from "./ListItems";
+import { mainListItems, secondaryListItems } from "./ListItems";
 import NewQuestions from "../pages/NewQuestions";
 import { useNavigate } from "react-router-dom";
 
@@ -150,6 +150,7 @@ const Layout = () => {
           <List component="nav">
             {mainListItems}
             <Divider sx={{ my: 1 }} />
+            {secondaryListItems}
           </List>
         </Drawer>
         <Box
