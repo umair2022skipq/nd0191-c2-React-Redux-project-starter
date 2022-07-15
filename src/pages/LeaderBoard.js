@@ -1,7 +1,7 @@
 import React from "react";
 
 const LeaderBoard = () => {
-  return <div>LeaderBoard</div>;
+  return <h1>LeaderBoard</h1>;
 };
 
 export default LeaderBoard;

@@ -1,7 +1,7 @@
 import React from "react";
 
 const AddQuestions = () => {
-  return <div>AddQuestions</div>;
+  return <h1>AddQuestions</h1>;
 };
 
 export default AddQuestions;

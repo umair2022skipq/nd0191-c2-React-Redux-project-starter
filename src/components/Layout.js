@@ -19,8 +19,14 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import { useState } from "react";
 
 import { mainListItems } from "./ListItems";
-import NewQuestions from "../pages/NewQuestions";
+
 import { useNavigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import NewQuestions from "../pages/NewQuestions";
+import LeaderBoard from "../pages/LeaderBoard";
+import AddQuestions from "../pages/AddQuestions";
+import AnsweredQuestion from "../pages/AnsweredQuestion";
 
 const Layout = () => {
   function Copyright(props) {
@@ -166,7 +172,12 @@ const Layout = () => {
         >
           <Toolbar />
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-            <NewQuestions />
+            <Routes>
+              <Route path="/" element={<NewQuestions />} />
+              <Route path="/answered" element={<AnsweredQuestion />} />
+              <Route path="/add-question" element={<AddQuestions />} />
+              <Route path="/leaderboard" element={<LeaderBoard />} />
+            </Routes>
             <Copyright sx={{ pt: 4 }} />
           </Container>
         </Box>
