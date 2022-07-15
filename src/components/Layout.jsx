@@ -20,6 +20,7 @@ import { useState } from "react";
 
 import { mainListItems } from "./ListItems";
 import NewQuestions from "../pages/NewQuestions";
+import { useNavigate } from "react-router-dom";
 
 const Layout = () => {
   function Copyright(props) {
