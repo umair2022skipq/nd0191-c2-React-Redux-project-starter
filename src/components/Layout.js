@@ -25,6 +25,7 @@ import NewQuestions from "../pages/NewQuestions";
 import LeaderBoard from "../pages/LeaderBoard";
 import AddQuestions from "../pages/AddQuestions";
 import AnsweredQuestion from "../pages/AnsweredQuestion";
+import SubmitQuestion from "../pages/SubmitQuestion";
 
 const Layout = () => {
   function Copyright(props) {
@@ -171,13 +172,13 @@ const Layout = () => {
           <Toolbar />
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
             <Routes>
-              <Route path="/" element={<NewQuestions />} />
+              <Route path="/" element={<SubmitQuestion />} />
               <Route path="/answered" element={<AnsweredQuestion />} />
               <Route path="/add-question" element={<AddQuestions />} />
               <Route path="/leaderboard" element={<LeaderBoard />} />
             </Routes>
-            <Copyright sx={{ pt: 4 }} />
           </Container>
+          <Copyright sx={{ pt: 4 }} />
         </Box>
       </Box>
     </ThemeProvider>
