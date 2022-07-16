@@ -1,5 +1,7 @@
-const NewQuestions = () => {
-  return <h1>New Questions</h1>;
+import React from "react";
+
+const AddQuestions = () => {
+  return <h1>Questions</h1>;
 };
 
-export default NewQuestions;
+export default AddQuestions;
