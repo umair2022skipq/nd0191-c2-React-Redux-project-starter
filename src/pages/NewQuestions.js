@@ -1,4 +1,4 @@
-import { List, ListItem, ListItemText } from "@mui/material";
+import { List, ListItem, ListItemAvatar, ListItemText } from "@mui/material";
 import { Divider, Avatar } from "@mui/material/";
 import { useState, useEffect } from "react";
 
@@ -23,14 +23,13 @@ const NewQuestions = () => {
           {questions.map((item) => (
             <div key={item.id}>
               <ListItem>
-                <Avatar src="'https://www.w3schools.com/w3images/avatar2.png'" />
-                <ListItemText>
-                  Would you rather {item.optionOne.text} or{" "}
-                  {item.optionTwo.text}
-                </ListItemText>
-                <p>
-                  {item.author} <span>on {item.timestamp}</span>
-                </p>
+                <ListItemAvatar>
+                  <Avatar src="'https://www.w3schools.com/w3images/avatar2.png'" />
+                </ListItemAvatar>
+                <ListItemText
+                  primary={`Would you rather ${item.optionOne.text} or ${item.optionTwo.text}`}
+                  secondary={`${item.author} on ${Date(item.timestamp)}`}
+                />
               </ListItem>
               <Divider />
             </div>
