@@ -1,12 +1,16 @@
 import { List, ListItem, ListItemAvatar, ListItemText } from "@mui/material";
 import { Divider, Avatar } from "@mui/material/";
 import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-
-import { _getQuestions } from "../data/_DATA";
+import { useSelector } from "react-redux";
+import { employeePollSelector } from "../features/employeePoll/employeePollSlice";
+import { userSelector } from "../features/userSlice/userSlice";
+import { _getQuestions, _getUsers } from "../data/_DATA";
 
 const NewQuestions = () => {
   const [questions, setQuestions] = useState([]);
+
+  const poll = useSelector(employeePollSelector);
+  const user = useSelector(userSelector);
 
   useEffect(() => {
     const fetchQuestions = async () => {
@@ -16,6 +20,8 @@ const NewQuestions = () => {
     };
     fetchQuestions();
   }, []);
+
+  console.log(poll, user);
 
   return (
     <>

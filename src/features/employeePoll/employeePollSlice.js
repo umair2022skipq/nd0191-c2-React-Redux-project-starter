@@ -128,6 +128,7 @@ const pluckQuestionIds = (questionsById) => {
     .reduce((allIds, question) => [...allIds, question.id], []);
 };
 
-export const pollSelector = (state) => state.poll;
+export const employeePollSelector = (state) => state.poll;
+
 export const { add, update } = employeePollSlice.actions;
 export default employeePollSlice.reducer;
