@@ -172,7 +172,7 @@ const Layout = () => {
           <Toolbar />
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
             <Routes>
-              <Route path="/" element={<SubmitQuestion />} />
+              <Route path="/" element={<NewQuestions />} />
               <Route path="/answered" element={<AnsweredQuestion />} />
               <Route path="/add-question" element={<AddQuestions />} />
               <Route path="/leaderboard" element={<LeaderBoard />} />
