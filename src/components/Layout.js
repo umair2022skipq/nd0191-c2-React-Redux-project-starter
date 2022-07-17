@@ -10,8 +10,6 @@ import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import Badge from "@mui/material/Badge";
 import Container from "@mui/material/Container";
-import Grid from "@mui/material/Grid";
-import Paper from "@mui/material/Paper";
 import Link from "@mui/material/Link";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
@@ -23,7 +21,7 @@ import { Routes, Route } from "react-router-dom";
 
 import NewQuestions from "../pages/NewQuestions";
 import LeaderBoard from "../pages/LeaderBoard";
-import AddQuestions from "../pages/AddQuestions";
+import QuestionDetails from "../pages/QuestionDetails";
 import AnsweredQuestion from "../pages/AnsweredQuestion";
 import SubmitQuestion from "../pages/SubmitQuestion";
 
@@ -174,8 +172,9 @@ const Layout = () => {
             <Routes>
               <Route path="/" element={<NewQuestions />} />
               <Route path="/answered" element={<AnsweredQuestion />} />
-              <Route path="/add-question" element={<AddQuestions />} />
+              <Route path="/question-details" element={<QuestionDetails />} />
               <Route path="/leaderboard" element={<LeaderBoard />} />
+              <Route path="/new-questions" element={<NewQuestions />} />
             </Routes>
           </Container>
           <Copyright sx={{ pt: 4 }} />
