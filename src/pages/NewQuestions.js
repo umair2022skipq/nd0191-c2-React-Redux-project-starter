@@ -1,11 +1,12 @@
 import { List, ListItem, ListItemAvatar, ListItemText } from "@mui/material";
 import { Divider, Avatar } from "@mui/material/";
 import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import { _getQuestions } from "../data/_DATA";
 
 const NewQuestions = () => {
-  const [questions, setQuestions] = useState();
+  const [questions, setQuestions] = useState([]);
 
   useEffect(() => {
     const fetchQuestions = async () => {
@@ -24,7 +25,7 @@ const NewQuestions = () => {
             <div key={item.id}>
               <ListItem>
                 <ListItemAvatar>
-                  <Avatar src="'https://www.w3schools.com/w3images/avatar2.png'" />
+                  <Avatar src="https://www.w3schools.com/w3images/avatar2.png" />
                 </ListItemAvatar>
                 <ListItemText
                   primary={`Would you rather ${item.optionOne.text} or ${item.optionTwo.text}`}

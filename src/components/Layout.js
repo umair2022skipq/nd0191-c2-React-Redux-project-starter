@@ -23,7 +23,7 @@ import NewQuestions from "../pages/NewQuestions";
 import LeaderBoard from "../pages/LeaderBoard";
 import QuestionDetails from "../pages/QuestionDetails";
 import AnsweredQuestion from "../pages/AnsweredQuestion";
-import SubmitQuestion from "../pages/SubmitQuestion";
+// import SubmitQuestion from "../pages/SubmitQuestion";
 
 const Layout = () => {
   function Copyright(props) {
