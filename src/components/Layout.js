@@ -13,7 +13,7 @@ import Container from "@mui/material/Container";
 import Link from "@mui/material/Link";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import NotificationsIcon from "@mui/icons-material/Notifications";
+import { Button } from "@mui/material";
 import { useState } from "react";
 
 import { MainListItems } from "./ListItems";
@@ -128,10 +128,9 @@ const Layout = ({ isLoading }) => {
               Employes Poll
             </Typography>
             <IconButton color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <NotificationsIcon />
-                {/* ADD LOGOUT BUTTON HERE */}
-              </Badge>
+              <Button variant="contained" color="error">
+                LogOut
+              </Button>
             </IconButton>
           </Toolbar>
         </AppBar>
