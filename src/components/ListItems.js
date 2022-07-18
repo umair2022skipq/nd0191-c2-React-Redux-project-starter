@@ -2,36 +2,40 @@ import React from "react";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import DashboardIcon from "@mui/icons-material/Dashboard";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import PeopleIcon from "@mui/icons-material/People";
-import BarChartIcon from "@mui/icons-material/BarChart";
+
 import {
   CreateSharp,
   Leaderboard,
   MarkEmailRead,
   MarkEmailUnread,
 } from "@mui/icons-material";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export const MainListItems = () => {
   const navigate = useNavigate();
+  const { pathname } = useLocation();
 
   return (
     <>
-      <ListItemButton onClick={() => navigate("/")}>
+      <ListItemButton selected={pathname === "/"} onClick={() => navigate("/")}>
         <ListItemIcon>
           <MarkEmailUnread />
         </ListItemIcon>
         <ListItemText primary="Questions" />
       </ListItemButton>
-      <ListItemButton onClick={() => navigate("/answered")}>
+      <ListItemButton
+        selected={pathname === "/answered"}
+        onClick={() => navigate("/answered")}
+      >
         <ListItemIcon>
           <MarkEmailRead />
         </ListItemIcon>
         <ListItemText primary="Answered Questions" />
       </ListItemButton>
-      <ListItemButton onClick={() => navigate("/add-question")}>
+      <ListItemButton
+        selected={pathname === "/add"}
+        onClick={() => navigate("/add")}
+      >
         <ListItemIcon>
           <CreateSharp />
         </ListItemIcon>
@@ -43,7 +47,10 @@ export const MainListItems = () => {
         </ListItemIcon>
         <ListItemText primary="New Questions" />
       </ListItemButton> */}
-      <ListItemButton onClick={() => navigate("/leaderboard")}>
+      <ListItemButton
+        selected={pathname === "/leaderboard"}
+        onClick={() => navigate("/leaderboard")}
+      >
         <ListItemIcon>
           <Leaderboard />
         </ListItemIcon>

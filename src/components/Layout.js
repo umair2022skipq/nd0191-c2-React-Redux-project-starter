@@ -21,9 +21,8 @@ import { Routes, Route } from "react-router-dom";
 
 import NewQuestions from "../pages/NewQuestions";
 import LeaderBoard from "../pages/LeaderBoard";
+import AddQuestion from "../pages/AddQuestion";
 import QuestionDetails from "../pages/QuestionDetails";
-import AnsweredQuestion from "../pages/AnsweredQuestion";
-// import SubmitQuestion from "../pages/SubmitQuestion";
 
 const Layout = ({ isLoading }) => {
   function Copyright(props) {
@@ -174,10 +173,16 @@ const Layout = ({ isLoading }) => {
                 path="/"
                 element={<NewQuestions isLoading={isLoading} />}
               />
-              <Route path="/answered" element={<AnsweredQuestion />} />
-              <Route path="/question-details" element={<QuestionDetails />} />
+              <Route
+                path="/answered"
+                element={<NewQuestions isLoading={isLoading} />}
+              />
+              <Route path="/add" element={<AddQuestion />} />
               <Route path="/leaderboard" element={<LeaderBoard />} />
-              <Route path="/new-questions" element={<NewQuestions />} />
+              <Route
+                path="/questions/:question_id"
+                element={<QuestionDetails />}
+              />
             </Routes>
           </Container>
           <Copyright sx={{ pt: 4 }} />

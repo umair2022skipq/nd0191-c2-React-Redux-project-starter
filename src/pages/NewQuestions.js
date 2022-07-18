@@ -7,6 +7,7 @@ import { _getQuestions, _getUsers } from "../data/_DATA";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 import Question from "./Question";
+import { useLocation } from "react-router-dom";
 
 export function CircularIndeterminate() {
   return (
@@ -33,11 +34,16 @@ const sarahedo = {
 const NewQuestions = ({ isLoading }) => {
   const poll = useSelector(employeePollSelector);
   const user = useSelector(userSelector);
+  const { pathname } = useLocation();
 
   const answeredQuestionIds = Object.keys(sarahedo.answers);
-  const newQuestionIds = poll.questions.allIds.filter(
-    (id) => !answeredQuestionIds.includes(id)
-  );
+  const newQuestionIds = poll.questions.allIds.filter((id) => {
+    if (pathname === "/") {
+      return !answeredQuestionIds.includes(id);
+    } else {
+      return answeredQuestionIds.includes(id);
+    }
+  });
 
   const newQuestionsWithAuthors = newQuestionIds.map((id) => {
     const question = poll.questions.byId[id];

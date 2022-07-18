@@ -1,52 +1,93 @@
-import Box from "@mui/material/Box";
-import { Button, TextField } from "@mui/material";
+import {
+  FormControl,
+  FormControlLabel,
+  FormHelperText,
+  FormLabel,
+  RadioGroup,
+} from "@mui/material";
+import {
+  Button,
+  Radio,
+  Card,
+  CardContent,
+  CardMedia,
+  Box,
+} from "@mui/material";
 import Typography from "@mui/material/Typography";
 
-const styles = {
-  boxSx: {
-    width: 500,
-    maxWidth: "100%",
-    margin: "15px auto",
-  },
-  buttonSx: { mt: 1, mr: 1 },
-};
-
-const NewQuestions = () => {
+const QuestionDetails = () => {
   return (
     <>
-      <Typography sx={styles.boxSx} variant="h2" component="div" gutterBottom>
-        Add Question
-      </Typography>
-      <Typography
-        sx={styles.boxSx}
-        variant="body2"
-        component="div"
-        gutterBottom
+      <Card
+        sx={{
+          display: "flex",
+          width: "100%",
+          maxWidth: 500,
+        }}
       >
-        Would You Rather
-      </Typography>
-      <Box component="form" noValidate autoComplete="off">
-        <Box sx={styles.boxSx}>
-          <TextField fullWidth label="Option One" name="optionOneText" />
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            padding: 5,
+          }}
+        >
+          <CardMedia
+            component="img"
+            sx={{ width: 151 }}
+            image="https://www.w3schools.com/w3images/avatar2.png"
+            // alt={author.name}
+          />
+          <p>Poll By: Author name</p>
         </Box>
-
-        <Box sx={styles.boxSx}>
-          <TextField fullWidth label="Option Two" name="optionTwoText" />
+        <Box sx={{ display: "flex", flexDirection: "column" }}>
+          <CardContent sx={{ flex: "1 0 auto" }}>
+            <form>
+              <fieldset style={{ border: 0 }}>
+                <FormControl
+                  sx={{ m: 3 }}
+                  component="fieldset"
+                  variant="standard"
+                >
+                  <FormLabel component="legend">Would you rather...</FormLabel>
+                  <RadioGroup aria-label="quiz" name="value">
+                    <FormControlLabel
+                      value="Anything"
+                      control={<Radio />}
+                      label="Anything"
+                      //disabled={!!existingValue}
+                    />
+                    <FormControlLabel
+                      value="Anything"
+                      control={<Radio />}
+                      label="Anything"
+                      // disabled={!!existingValue}
+                    />
+                  </RadioGroup>
+                  {/* <FormHelperText>
+                    {existingValue
+                      ? ""
+                      : "Stats will appear answer picking an option..."}
+                  </FormHelperText> */}
+                  <Button
+                    type="submit"
+                    fullWidth
+                    variant="contained"
+                    sx={{ mt: 3, mb: 2 }}
+                    // loading={loading}
+                    // disabled={!!existingValue}
+                  >
+                    Submit
+                  </Button>
+                </FormControl>
+              </fieldset>
+            </form>
+          </CardContent>
         </Box>
-
-        <Box sx={styles.boxSx}>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2 }}
-          >
-            Submit
-          </Button>
-        </Box>
-      </Box>
+      </Card>
     </>
   );
 };
 
-export default NewQuestions;
+export default QuestionDetails;
