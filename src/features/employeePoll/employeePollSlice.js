@@ -6,17 +6,17 @@ import {
 } from "../../data/_DATA";
 
 export const getQuestionsAsync = createAsyncThunk(
-  "poll/getQuestions",
+  "poll/getQuestionsAsync",
   async () => await _getQuestions()
 );
 
 export const addQuestionAsync = createAsyncThunk(
-  "poll/addQuestion",
+  "poll/addQuestionAsync",
   async (args) => await _saveQuestion(args)
 );
 
 export const addAnswerAsync = createAsyncThunk(
-  "poll/addQuestionAnswer",
+  "poll/addAnswerAsync",
   async (args) =>
     await _saveQuestionAnswer({
       authUser: args.userId,

@@ -25,7 +25,7 @@ import QuestionDetails from "../pages/QuestionDetails";
 import AnsweredQuestion from "../pages/AnsweredQuestion";
 // import SubmitQuestion from "../pages/SubmitQuestion";
 
-const Layout = () => {
+const Layout = ({ isLoading }) => {
   function Copyright(props) {
     return (
       <Typography
@@ -170,7 +170,10 @@ const Layout = () => {
           <Toolbar />
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
             <Routes>
-              <Route path="/" element={<NewQuestions />} />
+              <Route
+                path="/"
+                element={<NewQuestions isLoading={isLoading} />}
+              />
               <Route path="/answered" element={<AnsweredQuestion />} />
               <Route path="/question-details" element={<QuestionDetails />} />
               <Route path="/leaderboard" element={<LeaderBoard />} />
