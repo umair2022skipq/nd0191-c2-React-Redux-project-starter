@@ -55,6 +55,7 @@ const QuestionDetails = ({ isLoading }) => {
 
     setValue(event.target.value);
   };
+  console.log(user, existingValue);
 
   const handleSubmit = (event) => {
     event.preventDefault();
