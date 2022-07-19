@@ -19,8 +19,8 @@ export const addAnswerAsync = createAsyncThunk(
   "poll/addAnswerAsync",
   async (args) =>
     await _saveQuestionAnswer({
-      authUser: args.userId,
-      qId: args.questionId,
+      authedUser: args.userId,
+      qid: args.questionId,
       answer: args.answer,
     })
 );

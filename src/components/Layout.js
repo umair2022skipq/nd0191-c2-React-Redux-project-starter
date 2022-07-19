@@ -8,7 +8,7 @@ import List from "@mui/material/List";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
-import Badge from "@mui/material/Badge";
+// import Badge from "@mui/material/Badge";
 import Container from "@mui/material/Container";
 import Link from "@mui/material/Link";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -128,9 +128,9 @@ const Layout = ({ isLoading }) => {
               Employes Poll
             </Typography>
             <IconButton color="inherit">
-              <Button variant="contained" color="error">
+              {/* <Button variant="contained" color="error">
                 LogOut
-              </Button>
+              </Button> */}
             </IconButton>
           </Toolbar>
         </AppBar>
@@ -180,7 +180,7 @@ const Layout = ({ isLoading }) => {
               <Route path="/leaderboard" element={<LeaderBoard />} />
               <Route
                 path="/questions/:question_id"
-                element={<QuestionDetails />}
+                element={<QuestionDetails isLoading={isLoading} />}
               />
             </Routes>
           </Container>

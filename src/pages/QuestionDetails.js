@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import {
   FormControl,
   FormControlLabel,
@@ -14,15 +15,75 @@ import {
   Box,
 } from "@mui/material";
 import Typography from "@mui/material/Typography";
+import { Spinner } from "./NewQuestions";
+import { useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  employeePollSelector,
+  addAnswerAsync,
+} from "../features/employeePoll/employeePollSlice";
+import { userSelector } from "../features/userSlice/userSlice";
 
-const QuestionDetails = () => {
+function checkIfUserHasVotedAlready(question, userID) {
+  if (question.optionOne.votes.includes(userID)) return "optionOne";
+  if (question.optionTwo.votes.includes(userID)) return "optionTwo";
+  return null;
+}
+
+const QuestionDetails = ({ isLoading }) => {
+  const [value, setValue] = useState("");
+
+  const user = useSelector(userSelector);
+  const poll = useSelector(employeePollSelector);
+
+  const dispatch = useDispatch();
+
+  const questionId = useParams();
+  const question = { ...poll.questions.byId[questionId.question_id] };
+
+  const author = user.users.byId[question.author];
+
+  if (!question) {
+    return <Typography>Question does not exist.</Typography>;
+  }
+
+  const existingValue = checkIfUserHasVotedAlready(question, "mtsamis");
+  const currentValue = existingValue || value;
+
+  const handleChange = (event) => {
+    if (existingValue) return;
+
+    setValue(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const node = event.target.value;
+    if (!node.value) {
+      return;
+    }
+
+    dispatch(
+      addAnswerAsync({
+        userId: "mtsamis",
+        questionId: question.id,
+        answer: node.value,
+      })
+    );
+  };
+
+  if (isLoading) {
+    return <Spinner />;
+  }
+
   return (
     <>
       <Card
         sx={{
           display: "flex",
           width: "100%",
-          maxWidth: 500,
+          maxWidth: 650,
         }}
       >
         <Box
@@ -36,14 +97,14 @@ const QuestionDetails = () => {
           <CardMedia
             component="img"
             sx={{ width: 151 }}
-            image="https://www.w3schools.com/w3images/avatar2.png"
-            // alt={author.name}
+            image={author.avatarURL || ""}
+            alt={author.name}
           />
-          <p>Poll By: Author name</p>
+          <p>Poll By: {author.name}</p>
         </Box>
         <Box sx={{ display: "flex", flexDirection: "column" }}>
           <CardContent sx={{ flex: "1 0 auto" }}>
-            <form>
+            <form onSubmit={handleSubmit}>
               <fieldset style={{ border: 0 }}>
                 <FormControl
                   sx={{ m: 3 }}
@@ -51,32 +112,36 @@ const QuestionDetails = () => {
                   variant="standard"
                 >
                   <FormLabel component="legend">Would you rather...</FormLabel>
-                  <RadioGroup aria-label="quiz" name="value">
+                  <RadioGroup
+                    aria-label="quiz"
+                    name="value"
+                    value={currentValue}
+                    onChange={handleChange}
+                  >
                     <FormControlLabel
-                      value="Anything"
+                      value="optionOne"
                       control={<Radio />}
-                      label="Anything"
-                      //disabled={!!existingValue}
+                      label={question.optionOne.text}
+                      disabled={existingValue !== null}
                     />
                     <FormControlLabel
-                      value="Anything"
+                      value="optionTwo"
                       control={<Radio />}
-                      label="Anything"
-                      // disabled={!!existingValue}
+                      label={question.optionTwo.text}
+                      disabled={existingValue !== null}
                     />
                   </RadioGroup>
-                  {/* <FormHelperText>
+                  <FormHelperText>
                     {existingValue
                       ? ""
                       : "Stats will appear answer picking an option..."}
-                  </FormHelperText> */}
+                  </FormHelperText>
                   <Button
                     type="submit"
                     fullWidth
                     variant="contained"
                     sx={{ mt: 3, mb: 2 }}
-                    // loading={loading}
-                    // disabled={!!existingValue}
+                    disabled={existingValue !== null}
                   >
                     Submit
                   </Button>
